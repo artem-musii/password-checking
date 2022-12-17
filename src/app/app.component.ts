@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  easyRegex = /^(?:[\d]*$)|(?:[a-zA-Z]*$)|(?:[-!@#%^&*()_+=[\]{}|\\:;"'<>,.?/]*$)/;
+  easyRegex = /^(?:[\d]*$)|(?:[a-zA-Z]*$)|(?:[-!@#%^ $&*()_+=[\]{}|\\:;"'<>,.?/]*$)/;
 
-  mediumRegex = /^(?:(?=.*[a-zA-Z])(?=.*[-!@#%^&*()_+=[\]{}|\\:;"'<>,.?/]).*$)|(?:(?=.*[a-zA-Z])(?=.*[\d]).*$)|(?:(?=.*[\d])(?=.*[-!@#%^&*()_+=[\]{}|\\:;"'<>,.?/]).*$)/;
+  mediumRegex = /^(?:(?=.*[a-zA-Z])(?=.*[-!@#%^&*()_+ $=[\]{}|\\:;"'<>,.?/]).*$)|(?:(?=.*[a-zA-Z])(?=.*[\d]).*$)|(?:(?=.*[\d])(?=.*[-!@#% $^&*()_+=[\]{}|\\:;"'<>,.?/]).*$)/;
 
-  strongRegex = /^(?=.*[a-zA-Z])(?=.*[\d])(?=.*[-!@#%^ &*()_+=[\]{}|\\:;"'<>,.?/]).*$/;
+  strongRegex = /^(?=.*[a-zA-Z])(?=.*[\d])(?=.*[-!@#%^ &*$()_+=[\]{}|\\:;"'<>,.?/]).*$/;
 
   passwordStrength = '';
   password = '';
@@ -32,12 +32,8 @@ export class AppComponent {
       this.passwordStrength = 'strong';
     }
 
-    if (value.trim().length < 8) {
+    if (value.length < 8) {
       this.passwordStrength = 'short';
-    }
-
-    if (!value.trim()) {
-      this.passwordStrength = '';
     }
   }
 }
