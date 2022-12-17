@@ -1,0 +1,41 @@
+<div class="container">
+  <input
+    class="input"
+    [value]="password"
+    #myInput
+    (input)="checkPasswordStrength(myInput.value)"
+    type="password"
+    placeholder="Enter password"
+  >
+
+  <section
+    class="section"
+    [ngClass]="{
+      easy: passwordStrength === 'short' || passwordStrength === 'easy',
+      medium: passwordStrength === 'medium',
+      strong: passwordStrength === 'strong'
+    }">
+    Easy
+  </section>
+
+  <section
+      class="section"
+      [ngClass]="{
+        easy: passwordStrength === 'short',
+        medium: passwordStrength === 'medium',
+        strong: passwordStrength === 'strong'
+      }"
+  >
+    Medium
+  </section>
+
+  <section
+    class="section"
+    [ngClass]="{
+      easy: passwordStrength === 'short',
+      strong: passwordStrength === 'strong'
+    }"
+  >
+    Strong
+  </section>
+</div>
